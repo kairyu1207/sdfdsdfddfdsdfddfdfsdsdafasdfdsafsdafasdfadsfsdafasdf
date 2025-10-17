@@ -1,26 +1,20 @@
-from urllib import request
-from fastapi import FastAPI, Form, Request
+from fastapi import FastAPI
 from fastapi.responses import FileResponse
-from pydantic import BaseModel
-from fastapi.responses import HTMLResponse
-from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
 
 @app.get("/")
-async def root(request : Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
+async def root():
+    return FileResponse("templates/index.html")
 
 @app.get("/features")
-async def say_hello(request : Request):
-    return templates.TemplateResponse("features.html", {"request": request})
+async def features():
+    return FileResponse("templates/features.html")
 
 @app.get("/about")
-async def about(request : Request):
-    return templates.TemplateResponse("about.html", {"request": request})
+async def about():
+    return FileResponse("templates/about.html")
+
 @app.get("/pricing")
-async def pricing(request : Request):
-    return templates.TemplateResponse("pricing.html", {"request": request})
-
-
+async def pricing():
+    return FileResponse("templates/pricing.html")
