@@ -5,16 +5,17 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return FileResponse("templates/index.html")
+    return FileResponse("index.html")
 
 @app.get("/features")
 async def features():
-    return FileResponse("templates/features.html")
+    return FileResponse("features.html")
 
 @app.get("/about")
 async def about():
-    return FileResponse("templates/about.html")
+    return FileResponse("about.html")
 
 @app.get("/pricing")
 async def pricing():
-    return FileResponse("templates/pricing.html")
+    return FileResponse("pricing.html")
+
