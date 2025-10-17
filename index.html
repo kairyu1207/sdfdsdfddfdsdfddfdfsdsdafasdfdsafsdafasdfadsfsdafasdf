@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MAIN — Bold Landing</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0f172a; /* Navy */
+      --bg2:#081028; /* deep */
+      --accent1:#7C3AED; /* purple */
+      --accent2:#06B6D4; /* cyan */
+      --glass: rgba(255,255,255,0.07);
+      --glass-strong: rgba(255,255,255,0.10);
+      --maxwidth:1200px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+
+    /* animated gradient mesh background */
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.18), transparent 10%),
+                  radial-gradient(900px 450px at 85% 80%, rgba(6,182,212,0.12), transparent 10%),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px 20px;
+      overflow-x:hidden;
+    }
+
+    /* subtle moving background shapes */
+    .bg-shape{position:fixed;inset:0;pointer-events:none;mix-blend-mode:screen}
+    .bg-shape::before, .bg-shape::after{
+      content:"";position:absolute;border-radius:50%;filter:blur(120px);opacity:0.9;
+      transform:translateZ(0);
+    }
+    .bg-shape::before{width:650px;height:650px;left:-15%;top:-10%;background:linear-gradient(45deg,var(--accent1),transparent);animation:float1 12s ease-in-out infinite}
+    .bg-shape::after{width:520px;height:520px;right:-10%;bottom:-5%;background:linear-gradient(135deg,var(--accent2),transparent);animation:float2 14s ease-in-out infinite}
+    @keyframes float1{0%{transform:translateY(0)}50%{transform:translateY(40px)}100%{transform:translateY(0)}}
+    @keyframes float2{0%{transform:translateY(0) scale(1)}50%{transform:translateY(-40px) scale(1.05)}100%{transform:translateY(0) scale(1)}}
+
+    /* container */
+    .wrap{width:100%;max-width:var(--maxwidth);display:grid;grid-template-columns:1fr 460px;gap:40px;align-items:center}
+    @media (max-width:980px){.wrap{grid-template-columns:1fr;padding-top:40px}}
+
+    /* left: hero */
+    .hero{padding:48px;border-radius:20px;backdrop-filter:blur(8px) saturate(110%);background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));border:1px solid rgba(255,255,255,0.06);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    .eyebrow{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--accent1),var(--accent2));font-weight:600;color:white;font-size:13px;margin-bottom:18px}
+    h1{font-size:44px;line-height:1.02;margin:6px 0 14px;font-weight:800;letter-spacing:-0.02em}
+    p.lead{margin:0 0 24px;color:rgba(230,238,248,0.85);font-weight:400;font-size:16px}
+
+    .cta-row{display:flex;gap:16px;align-items:center}
+    .btn{padding:14px 18px;border-radius:12px;font-weight:700;border:0;cursor:pointer}
+    .btn-primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;box-shadow:0 8px 24px rgba(12,10,30,0.6);}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--accent2)}
+
+    /* feature pills */
+    .features{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+    .pill{padding:10px 12px;border-radius:999px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.04);font-size:13px}
+
+    /* right: glass card */
+    .card{padding:28px;border-radius:18px;background:var(--glass);backdrop-filter:blur(10px) saturate(130%);border:1px solid rgba(255,255,255,0.06);box-shadow:0 8px 30px rgba(2,6,23,0.55)}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .stat{display:flex;align-items:center;justify-content:space-between;font-weight:700;padding:14px 0;border-bottom:1px dashed rgba(255,255,255,0.03)}
+
+    /* footer links in card */
+    .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .meta a{font-size:13px;color:rgba(230,238,248,0.9);text-decoration:none}
+
+    /* nav */
+    .nav{position:absolute;left:40px;top:28px;display:flex;gap:20px;align-items:center}
+    .logo{font-weight:800;letter-spacing:-0.02em}
+    .menu{display:flex;gap:16px}
+    .menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-weight:600;font-size:14px}
+    @media(max-width:980px){.nav{left:20px;right:20px;top:18px}.menu{display:none}.menu-toggle{display:inline-flex}}
+
+    .menu-toggle{display:none;background:transparent;border:1px solid rgba(255,255,255,0.07);padding:8px;border-radius:10px;color:white}
+
+    /* small utilities */
+    .muted{color:rgba(230,238,248,0.6);font-size:13px}
+
+    /* little entry animation */
+    .hero, .card{transform:translateY(12px);opacity:0;animation:entrance .8s ease-out forwards}
+    .card{animation-delay:.12s}
+    @keyframes entrance{to{transform:none;opacity:1}}
+
+    /* minimal accessibility focus styles */
+    a:focus, button:focus{outline:3px solid rgba(124,58,237,0.18);outline-offset:3px}
+
+  </style>
+</head>
+<body>
+  <div class="bg-shape" aria-hidden="true"></div>
+
+  <nav class="nav" aria-label="Primary navigation">
+    <div class="logo">MAIN<span class="muted">•UI</span></div>
+    <div style="flex:1"></div>
+    <div class="menu" role="menubar">
+      <a href="features">Features</a>
+      <a href="pricing">Pricing</a>
+      <a href="about">About</a>
+    </div>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
+      <span class="eyebrow">LAUNCH 2025</span>
+      <h1 id="hero-title">압도적으로 몰입되는<br>웹 메인 페이지 디자인</h1>
+      <p class="lead">Glassmorphism과 그라데이션 메쉬, 미세한 애니메이션을 결합해 현대적이고 세련된 첫인상을 만듭니다. 반응형, 접근성 고려, 실제 프로덕션에 바로 적용 가능.</p>
+
+      <div class="cta-row">
+        <button class="btn btn-primary">Get Started</button>
+        <button class="btn btn-ghost">Explore</button>
+      </div>
+
+      <div class="features" id="features">
+        <div class="pill">Frosted glass UI</div>
+        <div class="pill">Responsive layout</div>
+        <div class="pill">Accessible</div>
+        <div class="pill">Perf optimized</div>
+      </div>
+    </section>
+
+    <aside class="card" aria-labelledby="card-title">
+      <h3 id="card-title">Quick Stats</h3>
+      <div class="stat"><span>Launch readiness</span><span>92%</span></div>
+      <div class="stat"><span>Performance</span><span>88/100</span></div>
+      <div class="stat"><span>Design tokens</span><span>12</span></div>
+
+      <div class="meta">
+        <a href="#">Documentation</a>
+        <a href="#">Components</a>
+        <a href="#">Changelog</a>
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    // mobile menu toggle (tiny, no frameworks)
+    const toggle = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('.menu');
+    toggle?.addEventListener('click', ()=>{
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        menu.style.display = 'flex';
+        menu.style.position = 'absolute';
+        menu.style.right = '20px';
+        menu.style.top = '56px';
+        menu.style.flexDirection = 'column';
+        menu.style.background = 'linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01))';
+        menu.style.padding = '12px';
+        menu.style.borderRadius = '12px';
+      } else {
+        menu.style.display = '';
+      }
+    });
+
+    // simple prefers-reduced-motion respect
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if(media.matches){
+      document.querySelectorAll('.hero, .card').forEach(el=>el.style.animation='none');
+      document.querySelectorAll('.bg-shape::before, .bg-shape::after');
+    }
+  </script>
+</body>
+</html>

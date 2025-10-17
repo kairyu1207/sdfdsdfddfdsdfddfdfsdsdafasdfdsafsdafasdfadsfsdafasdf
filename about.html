@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - NovaX</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #000;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    header h1 {
+      font-weight: 800;
+      color: #111;
+      letter-spacing: 1px;
+    }
+    nav a {
+      text-decoration: none;
+      color: #111;
+      margin-left: 2rem;
+      transition: 0.3s;
+    }
+    nav a:hover {
+      color: #555;
+    }
+    section {
+      padding: 6rem 10%;
+      max-width: 900px;
+      margin: auto;
+      line-height: 1.8;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 2rem;
+    }
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+    .member {
+      text-align: center;
+    }
+    .member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid #000;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      border-top: 1px solid #ddd;
+      color: #666;
+      margin-top: 5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NovaX</h1>
+    <nav>
+      <a href="/">Home</a>
+      <a href="features">Features</a>
+      <a href="about">About</a>
+      <a href="pricing">Pricing</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>We Build the Future</h2>
+    <p>
+      NovaX는 기술과 예술의 경계를 허무는 혁신적인 테크 기업입니다.
+      우리의 목표는 단순히 제품을 만드는 것이 아니라, 새로운 ‘경험’을 설계하는 것입니다.
+    </p>
+    <p>
+      우리는 AI, 양자 알고리즘, 뉴럴 네트워크 UI 등 첨단 기술을 통해
+      사람과 기계가 공존하는 다음 세대를 만들어갑니다.
+    </p>
+
+    <div class="team">
+      <div class="member">
+        <img src="https://i.pravatar.cc/120?img=5" alt="CEO">
+        <h3>이승근</h3>
+        <p>Founder & Vision Director</p>
+      </div>
+      <div class="member">
+        <img src="https://i.pravatar.cc/120?img=10" alt="CTO">
+        <h3>Alex Kim</h3>
+        <p>CTO & Quantum Engineer</p>
+      </div>
+      <div class="member">
+        <img src="https://i.pravatar.cc/120?img=12" alt="Lead Designer">
+        <h3>Sophia Park</h3>
+        <p>Lead Designer</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 NovaX. Building Tomorrow, Today.</p>
+  </footer>
+</body>
+</html>
